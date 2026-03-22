@@ -1,0 +1,4 @@
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.AssemblyInfoInputs.cache
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.AssemblyInfo.cs
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.csproj.CoreCompileInputs.cache
