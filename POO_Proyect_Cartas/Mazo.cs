@@ -18,14 +18,14 @@ public class Mazo
     {
         foreach (Cartas carta in cartas)
         {
-            Console.WriteLine(carta.Nombre);
+            WriteLine(carta.Nombre);
             if (carta.Type != null)
             {
-                Console.WriteLine(carta.Type);
+                WriteLine(carta.Type);
             }
             if (carta is Especiales esp)
             {
-                Console.WriteLine(esp.Uso);
+                WriteLine(esp.Uso);
             }
         }
     }
@@ -174,6 +174,22 @@ public class Mazo
             {
                 Eliminar_Carta(rand);
                 break;
+            }
+        }
+    }
+
+    public void CartasIniciales()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            while (true)
+            {
+                int rand = new Random().Next(1, cartas.Count);
+                if (cartas[rand] != null)
+                {
+                    Eliminar_Carta(rand);
+                    break;
+                }
             }
         }
     }

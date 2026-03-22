@@ -5,13 +5,15 @@ class Program
     private static bool win;
     static void Main(string[] args)
     {
+        Player player = new Player();
+        Enemy enemy = new Enemy();
         Mazo mazo = new Mazo();
-       Partida partida = new Partida();
+       Mesa mesa = new Mesa();
        mazo.GenerarMazo();
        while (true)
        {
-          
-           partida.Turno(mazo);
+           
+           mesa.Turno(mazo,player,enemy);
            if(win){break;}
        }
         

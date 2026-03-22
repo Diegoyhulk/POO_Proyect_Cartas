@@ -2,5 +2,5 @@
 
 public class Player
 {
-    
+    Mazo mazo = new Mazo();
 }
