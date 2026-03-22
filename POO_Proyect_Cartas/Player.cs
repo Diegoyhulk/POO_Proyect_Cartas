@@ -1,6 +1,6 @@
 ﻿namespace POO_Proyect_Cartas;
 
-public class Cartas
+public class Player
 {
     
 }

@@ -12,3 +12,4 @@ C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\refin
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.pdb
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.genruntimeconfig.cache
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\ref\POO_Proyect_Cartas.dll
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.sourcelink.json
