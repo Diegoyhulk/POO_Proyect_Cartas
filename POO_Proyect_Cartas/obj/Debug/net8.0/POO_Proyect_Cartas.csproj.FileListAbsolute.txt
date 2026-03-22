@@ -2,3 +2,13 @@ C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_P
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.AssemblyInfoInputs.cache
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.AssemblyInfo.cs
 C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.csproj.CoreCompileInputs.cache
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\bin\Debug\net8.0\POO_Proyect_Cartas.exe
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\bin\Debug\net8.0\POO_Proyect_Cartas.deps.json
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\bin\Debug\net8.0\POO_Proyect_Cartas.runtimeconfig.json
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\bin\Debug\net8.0\POO_Proyect_Cartas.dll
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\bin\Debug\net8.0\POO_Proyect_Cartas.pdb
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.dll
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\refint\POO_Proyect_Cartas.dll
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.pdb
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\POO_Proyect_Cartas.genruntimeconfig.cache
+C:\Uni\POO Projecto\POO_Proyect_Cartas\POO_Proyect_Cartas\obj\Debug\net8.0\ref\POO_Proyect_Cartas.dll
