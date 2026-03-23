@@ -1,22 +1,25 @@
-﻿using System.Collections;
+﻿using System.ComponentModel;
 
-using static System.Console;
 namespace POO_Proyect_Cartas;
+using static System.Console;
 
 public class Mazo
 {
-    public List<Cartas> cartas { get; set; } = new List<Cartas>();
+    public Queue<Coleccion.Cartas> coleccion = new Queue<Coleccion.Cartas>();
+    public int CantidadMazo => coleccion.Count;
 
-    public int CantidadCartas => cartas.Count;
-    public abstract class Cartas
+    public void Shuffle(List<Coleccion.Cartas> cartas)
     {
-        public abstract string Nombre { get; set; }
-        public string Type;
+        while (cartas.Count > 0)
+        {
+            int rand = new Random().Next(0, cartas.Count);
+            coleccion.Enqueue(cartas[rand]);
+            cartas.Remove(cartas[rand]);
+        }
     }
-
     public void LLamarCartas()
     {
-        foreach (Cartas carta in cartas)
+        foreach (Coleccion.Cartas carta in coleccion)
         {
             WriteLine(carta.Nombre);
             if (carta.Type != null)
@@ -29,198 +32,31 @@ public class Mazo
             }
         }
     }
-    
-    public void GenerarMazo()
+    public void CogerCarta(Jugador p)
     {
-        for (int i = 1; i <= 21; i++)
-        {
-            switch (i)
-            {
-                case <= 5:
-                    cartas.Add(new Organos
-                    {
-                        Type = "Sanguíneo"
-                    });
-                    break;
-                case <= 10 and >5:
-                    cartas.Add(new Organos
-                    {
-                        Type = "Ósseo"
-                    });
-                    break;
-                case <= 15 and > 10:
-                    cartas.Add(new Organos
-                    {
-                        Type = "Neuronal"
-                    });
-                    break;
-                case <= 20 and >15:
-                    cartas.Add(new Organos
-                    {
-                        Type = "Gástrico"
-                    });
-                    break;
-                case <= 21 and >20:
-                    cartas.Add(new Organos
-                    {
-                        Type = "Comodín"
-                    });
-                    break;
-            }
-        }
-        for (int i = 1; i <= 17; i++)
-        {
-            switch (i)
-            {
-                case <= 4:
-                    cartas.Add(new Bacterias
-                    {
-                        Type = "Sanguíneo"
-                    });
-                    break;
-                case <= 8 and >4:
-                    cartas.Add(new Bacterias
-                    {
-                        Type = "Ósseo"
-                    });
-                    break;
-                case <= 12 and > 8:
-                    cartas.Add(new Bacterias
-                    {
-                        Type = "Neuronal"
-                    });
-                    break;
-                case <= 16 and >12:
-                    cartas.Add(new Bacterias
-                    {
-                        Type = "Gástrico"
-                    });
-                    break;
-                case <= 17 and >16:
-                    cartas.Add(new Bacterias
-                    {
-                        Type = "Comodín"
-                    });
-                    break;
-            }
-        }
-        for (int i = 1; i <= 20; i++)
-        {
-            switch (i)
-            {
-                case <= 4:
-                    cartas.Add(new Curas
-                    {
-                        Type = "Sanguíneo"
-                    });
-                    break;
-                case <= 8 and >4:
-                    cartas.Add(new Curas
-                    {
-                        Type = "Ósseo"
-                    });
-                    break;
-                case <= 12 and > 8:
-                    cartas.Add(new Curas
-                    {
-                        Type = "Neuronal"
-                    });
-                    break;
-                case <= 16 and >12:
-                    cartas.Add(new Curas
-                    {
-                        Type = "Gástrico"
-                    });
-                    break;
-                case <= 20 and >16:
-                    cartas.Add(new Curas
-                    {
-                        Type = "Comodín"
-                    });
-                    break;
-            }
-        }
-        for (int i = 1; i <= 10; i++)
-        {
-            if (i <= 2)
-            {
-                cartas.Add(new Especiales{Uso ="Robo"});
-            }
-            if (i is <= 4 and >2)
-            {
-                cartas.Add(new Especiales{Uso ="Descarte"});
-            }
-            if (i is <= 6 and >4)
-            {
-                cartas.Add(new Especiales{Uso ="Transplante"});
-            }
-            if (i is <= 8 and >6)
-            {
-                cartas.Add(new Especiales{Uso ="Error"});
-            }
-            if (i is <= 10 and >8)
-            {
-                cartas.Add(new Especiales{Uso ="Contagio"});
-            }
-        }
-    }
-
-    public void CogerCarta()
-    {
-        while (true)
-        {
-            int rand = new Random().Next(1, cartas.Count);
-            if (cartas[rand] != null)
-            {
-                Eliminar_Carta(rand);
-                break;
-            }
-        }
-    }
-
-    public void CartasIniciales()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            while (true)
-            {
-                int rand = new Random().Next(1, cartas.Count);
-                if (cartas[rand] != null)
-                {
-                    Eliminar_Carta(rand);
-                    break;
-                }
-            }
-        }
-    }
-
-    private void Eliminar_Carta(int i)
-    {
-        WriteLine($"Carta cogida: {cartas[i].Nombre}");
-        cartas.Remove(cartas[i]);
-        WriteLine($"Carta eliminada: {cartas[i].Nombre}");
+        if (p.cartasmano.Count == 3){WriteLine("Tienes no puedes coger más!");
+            WriteLine("Pulsa cualquier tecla para continuar");
+            ReadLine(); return;}
+        WriteLine($"Has cogido la carta{coleccion.Peek().Nombre}");
+        p.cartasmano.Add(coleccion.Dequeue());
         WriteLine($"Pulsa cualquier tecla para continuar");
         ReadLine();
     }
-}
 
-public class Organos : Mazo.Cartas
-{
-    public override string Nombre { get; set; } = "Organo";
-}
-
-public class Bacterias : Mazo.Cartas
-{
-    public override string Nombre { get; set; } = "Bacteria";
-}
-
-public class Curas : Mazo.Cartas
-{
-    public override string Nombre { get; set; } = "Cura";
-}
-
-public class Especiales : Mazo.Cartas
-{
-    public override string Nombre { get; set; } = "Especial";
-    public string Uso;
+    public void CartasIniciales(Jugador p)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            WriteLine($"Has cogido la carta{coleccion.Peek().Nombre}");
+            p.cartasmano.Add(coleccion.Dequeue());
+        }
+    }
+    public void Descartar_Carta(Jugador p, int i)
+    {
+        WriteLine($"Carta eliminada: {p.cartasmano[i].Nombre}");
+        coleccion.Enqueue(p.cartasmano[i]);
+        p.cartasmano.Remove(p.cartasmano[i]);
+        WriteLine("Pulsa cualquier tecla para continuar");
+        ReadLine();
+    }
 }
