@@ -51,10 +51,10 @@ public class Mazo
             p.cartasmano.Add(coleccion.Dequeue());
         }
     }
-    public void Descartar_Carta(Jugador p, int i)
+    public void Descartar_Carta(List<Coleccion.Cartas> cartas,Jugador p, int i)
     {
         WriteLine($"Carta eliminada: {p.cartasmano[i].Nombre}");
-        coleccion.Enqueue(p.cartasmano[i]);
+        cartas.Add(p.cartasmano[i]);
         p.cartasmano.Remove(p.cartasmano[i]);
         WriteLine("Pulsa cualquier tecla para continuar");
         ReadLine();

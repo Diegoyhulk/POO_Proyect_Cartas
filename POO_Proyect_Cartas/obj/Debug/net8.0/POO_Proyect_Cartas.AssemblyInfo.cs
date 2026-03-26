@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("POO_Proyect_Cartas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8109ed437b022b436c0e4e14399cb277aa6f4dd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ce0b5f69a47539d95111263615c0895a76dc8f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("POO_Proyect_Cartas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("POO_Proyect_Cartas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

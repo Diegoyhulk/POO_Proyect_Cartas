@@ -148,10 +148,6 @@ public class Coleccion
             }
         }
     }
-
-    
-
-    
 }
 
 public class Organos : Coleccion.Cartas
