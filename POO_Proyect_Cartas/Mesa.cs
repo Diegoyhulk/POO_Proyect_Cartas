@@ -3,18 +3,20 @@ using static System.Console;
 
 public class Mesa
 {
+    public IInfectable iinf;
     public int turnos { get; set; }
-    public void Turno(ref Coleccion coleccion,ref Mazo mazo,ref Player player,ref Enemy enemy)
+    public void Turno(ref Coleccion coleccion,ref Mazo mazo,ref Player player,ref Enemy enemy, ref bool win)
     {
         if (mazo.coleccion.Count == 0)
         {
             mazo.Shuffle(coleccion.cartas);
         }
-        mazo.LLamarCartas();
-        WriteLine($"{mazo.CantidadMazo} cartas");
+        
         //Turno
         while (true)
         {
+            mazo.LLamarCartas();
+            WriteLine($"{mazo.CantidadMazo} cartas");
             Write($"Turno: {turnos}\n");
             MostrarOrganos(player);
             MostrarMano(player);
@@ -22,17 +24,28 @@ public class Mesa
              $"(2)Descartar carta\n" +
              $"(3)Usar carta");
             string input = ReadLine();
-            if(input == "1"){mazo.CogerCarta(player); break;}
-            if (input == "2" &&  player.cartasmano.Count > 0)
-            {
-                if (Descarte(coleccion.cartas,mazo, player)) break;
-            }
-
+            if(input == "1"){if(mazo.CogerCarta(player))break;}
+            if (input == "2" &&  player.cartasmano.Count > 0){if (Descarte(coleccion.cartas,mazo, player)) break;}
             if (input == "3")
             {
                 if(UsarCarta(player)) break;
             }
-            else{WriteLine("input no valido");}
+            else{InputNotValid();}
+        }
+        foreach (var cart in  player.organos)
+        {
+            int i = 0;
+            if (cart is Organos org)
+            {
+                if (org.sano)
+                {
+                    i++;
+                }
+            }
+            if (i == 4)
+            {
+                win = true;
+            }
         }
         turnos++;
     }
@@ -57,14 +70,16 @@ public class Mesa
                 if(UsarOrgano(player)){return true;}
                 return false;
             default:
-                WriteLine("Input no valido");
+                InputNotValid();
                 return false;
         }
         
     }
     private bool UsarBacteria(Player player)
     {
-        throw new NotImplementedException();
+        
+        if (iinf.Infectar(player, 1)) return true;
+        return false;
     }
     private bool UsarCura(Player player)
     {
@@ -81,7 +96,6 @@ public class Mesa
                 break;
             }
         }
-
         if (hascard)
         {
             WriteLine("Que organo quieres usar?");
@@ -101,29 +115,33 @@ public class Mesa
         }
         else
         {
-            WriteLine("No tienes cartas que usar!\n" +
-                      "Pulsa enter para continuar");
+            WriteLine("No tienes organos!");
+            WriteLine("Pulsa enter para continuar");
             ReadLine();
             return false;
         }
         string input = ReadLine();
-        if (input == "1" && player.cartasmano[0] is Organos organo)
+        switch (input)
         {
-            player.poner_organos(0);
-            return true;
+            case "1" when player.cartasmano[0] is Organos organo:
+            {
+                if( player.poner_organos(0) ){return true;}
+                return false;
+            }
+            case "2" when player.cartasmano[1] is Organos aorgano:
+            {
+                if( player.poner_organos(1) ){return true;}
+                return false;
+            }
+            case "3" when player.cartasmano[2] is Organos borgano:
+            {
+                if( player.poner_organos(2) ){return true;}
+                return false;
+            }
+            default:
+                InputNotValid();
+                return false;
         }
-        if (input == "2" && player.cartasmano[1] is Organos aorgano)
-        {
-            player.poner_organos(2);
-            return true;
-        }
-        if (input == "3" && player.cartasmano[0] is Organos borgano)
-        {
-            player.poner_organos(3);
-            return true;
-        }
-
-        return false;
     }
     private static bool Descarte(List<Coleccion.Cartas> cartas ,Mazo mazo, Player player)
     {
@@ -135,20 +153,22 @@ public class Mesa
         var input1 = ReadLine();
         if (input1 == "1")
         {
-            mazo.Descartar_Carta(cartas,player, 0);
+            mazo.DescartarCarta(cartas,player, 0);
             return true;
         }
         if (input1 == "2" && player.cartasmano.Count > 1)
         {
-            mazo.Descartar_Carta(cartas,player, 1);
+            mazo.DescartarCarta(cartas,player, 1);
             return true;
         }
-        if (input1 == "3"&& player.cartasmano.Count > 2)
+
+        if (input1 == "3" && player.cartasmano.Count > 2)
         {
-            mazo.Descartar_Carta(cartas,player, 2);
+            mazo.DescartarCarta(cartas, player, 2);
             return true;
         }
-        else{WriteLine("Input no válido");}
+        else
+        {InputNotValid();}
 
         return false;
     }
@@ -211,7 +231,7 @@ public class Mesa
     private void MostrarOrganos(Player player)
     {
         WriteLine("Organos: ");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (player.organos[i] == null)
                 continue;
@@ -220,4 +240,10 @@ public class Mesa
         }
     }
 
+    private static void InputNotValid()
+    {
+        WriteLine("input no valido");
+        WriteLine("Pulsa enter para continuar");
+        ReadLine();
+    }
 }

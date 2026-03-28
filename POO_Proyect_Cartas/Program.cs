@@ -15,9 +15,9 @@ class Program
        mazo.CartasIniciales(player);
        while (true)
        {
-           mesa.Turno(ref coleccion,ref mazo,ref player,ref enemy);
+           mesa.Turno(ref coleccion,ref mazo,ref player,ref enemy, ref win);
            if(win){break;}
        }
-        
+        WriteLine("Tienes todos los organos sanos y ganas!");
     }
 }

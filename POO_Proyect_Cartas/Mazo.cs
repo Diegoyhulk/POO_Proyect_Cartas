@@ -32,15 +32,16 @@ public class Mazo
             }
         }
     }
-    public void CogerCarta(Jugador p)
+    public bool CogerCarta(Jugador p)
     {
         if (p.cartasmano.Count == 3){WriteLine("Tienes no puedes coger más!");
             WriteLine("Pulsa cualquier tecla para continuar");
-            ReadLine(); return;}
+            ReadLine(); return false;}
         WriteLine($"Has cogido la carta{coleccion.Peek().Nombre}");
         p.cartasmano.Add(coleccion.Dequeue());
         WriteLine($"Pulsa cualquier tecla para continuar");
         ReadLine();
+        return true;
     }
 
     public void CartasIniciales(Jugador p)
@@ -51,7 +52,7 @@ public class Mazo
             p.cartasmano.Add(coleccion.Dequeue());
         }
     }
-    public void Descartar_Carta(List<Coleccion.Cartas> cartas,Jugador p, int i)
+    public void DescartarCarta(List<Coleccion.Cartas> cartas,Jugador p, int i)
     {
         WriteLine($"Carta eliminada: {p.cartasmano[i].Nombre}");
         cartas.Add(p.cartasmano[i]);
