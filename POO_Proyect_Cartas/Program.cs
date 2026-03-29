@@ -13,11 +13,12 @@ class Program
        coleccion.GenerarMazo();
        mazo.Shuffle(coleccion.cartas);
        mazo.CartasIniciales(player);
+       mazo.CartasIniciales(enemy);
        while (true)
        {
-           mesa.Turno(ref coleccion,ref mazo,ref player,ref enemy, ref win);
+           mesa.Turno(ref coleccion,ref mazo,ref player,ref enemy);
            if(win){break;}
        }
-        WriteLine("Tienes todos los organos sanos y ganas!");
+        
     }
 }

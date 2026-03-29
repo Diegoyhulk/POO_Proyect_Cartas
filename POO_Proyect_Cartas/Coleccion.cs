@@ -150,19 +150,20 @@ public class Coleccion
     }
 }
 
-public class Organos : Coleccion.Cartas, IInfectable
+public class Organos : Coleccion.Cartas
 {
     public override string Nombre { get; set; } = "Organo";
+<<<<<<< HEAD
     public bool sano { get; set; } = true;
     public List<Bacterias> bacterias;
     public bool Infectar(Player player, int i)
     {
-        if (player.cartasmano[i] is Bacterias bact)
-        {
-            return true;
-        }
+        WriteLine("");
+        ReadLine();
         return false;
     }
+=======
+>>>>>>> parent of c710585 (Colocar_org_completo)
 }
 
 public class Bacterias : Coleccion.Cartas
